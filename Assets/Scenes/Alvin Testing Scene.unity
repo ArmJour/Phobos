@@ -959,7 +959,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 281
+  orthographic size: 280
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1034,6 +1034,11 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!95 &1105636598 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6841360016957714820, guid: 264033264e99df74ba25b33e2c11d8cd, type: 3}
+  m_PrefabInstance: {fileID: 1747283005}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1174263851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,7 +1490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2033896019494111641, guid: 264033264e99df74ba25b33e2c11d8cd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3727443001184801864, guid: 264033264e99df74ba25b33e2c11d8cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1527,6 +1532,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8360024282166677778, guid: 264033264e99df74ba25b33e2c11d8cd, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1105636598}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
