@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 6c467bcc42744b84fa59e46b04c5d5aa
+guid: e8acc44e65dd75e4ca98e334e56757a5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4905645192681894895
-    second: Twibbon Raion_0
+      213: 3341093529323198379
+    second: spr_player_right_hit_0
+  - first:
+      213: -6375839425098158413
+    second: spr_player_right_hit_1
+  - first:
+      213: -7931111939729201523
+    second: spr_player_right_hit_2
+  - first:
+      213: 5922747424731439311
+    second: spr_player_right_hit_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Twibbon Raion_0
+      name: spr_player_right_hit_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1023
-        height: 1280
+        x: 23
+        y: 17
+        width: 17
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe338efbf4a541440800000000000000
-      internalID: 4905645192681894895
+      spriteID: ba75aa0fcd2fd5e20800000000000000
+      internalID: 3341093529323198379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_player_right_hit_1
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 17
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bee712d2d77487a0800000000000000
+      internalID: -6375839425098158413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_player_right_hit_2
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 17
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d86e49e26b70fe190800000000000000
+      internalID: -7931111939729201523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_player_right_hit_3
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 17
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc02a791763d13250800000000000000
+      internalID: 5922747424731439311
       vertices: []
       indices: 
       edges: []
@@ -134,8 +209,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Twibbon Raion_0: 4905645192681894895
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
