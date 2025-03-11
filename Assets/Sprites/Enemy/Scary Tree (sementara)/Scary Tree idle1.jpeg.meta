@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scary Tree idle1_0: 2099877679183563572
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

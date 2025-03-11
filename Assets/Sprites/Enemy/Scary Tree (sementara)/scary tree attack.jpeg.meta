@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      scary tree attack_0: 5608783386901819036
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

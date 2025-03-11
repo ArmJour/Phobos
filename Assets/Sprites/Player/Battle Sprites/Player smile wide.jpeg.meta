@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Player smile wide_0: -4777931713082880126
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
