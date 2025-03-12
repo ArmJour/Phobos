@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3fd8ba8d17c57e543b48299e54719c9c
+guid: 7c950635c68efad4f888edad85975d80
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2099877679183563572
-    second: Scary Tree idle1_0
+      213: -8644435094258912471
+    second: Spider 4_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scary Tree idle1_0
+      name: Spider 4_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 640
-        height: 640
+        x: 25
+        y: 42
+        width: 595
+        height: 420
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 43b0283af93442d10800000000000000
-      internalID: 2099877679183563572
+      spriteID: 923f6caf41cc80880800000000000000
+      internalID: -8644435094258912471
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Scary Tree idle1_0: 2099877679183563572
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
