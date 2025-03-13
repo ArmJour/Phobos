@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
-    [SerializeField] private float transitionTime = 1f;
 
     // Update is called once per frame
     void Update()
@@ -21,7 +20,7 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    private void LoadBattleView()
+    public void LoadBattleView()
     {
         if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 0) 
         {
@@ -33,7 +32,7 @@ public class LevelLoader : MonoBehaviour
         }
         
     }
-    private void LoadMenuView()
+    public void LoadMenuView()
     {
         if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
         {
