@@ -11,26 +11,45 @@ public class LevelLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             LoadBattleView();
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            LoadMenuView();
+        }
     }
 
-    public void LoadBattleView()
+    private void LoadBattleView()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 0) 
         {
-            StartCoroutine(LoadScene(1)); // battle scene
+            StartCoroutine(LoadScene(2)); // battle scene
         }
         else
         {
-            StartCoroutine(LoadScene(0));
+            StartCoroutine(LoadScene(1)); // main scene
         }
         
     }
+    private void LoadMenuView()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            StartCoroutine(LoadScene(0)); // menu scene
+        }
+        else
+        {
+            StartCoroutine(LoadScene(1)); // main scene
+        }
+    }
+    public void LoadMainView()
+    {
+        StartCoroutine(LoadScene(1));
+    }
 
-    IEnumerator LoadScene(int SceneIndex)
+    private IEnumerator LoadScene(int SceneIndex)
     {
         // play animation
         transition.SetTrigger("Start");
