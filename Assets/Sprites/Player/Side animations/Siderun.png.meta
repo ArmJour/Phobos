@@ -1,31 +1,46 @@
 fileFormatVersion: 2
-guid: a1813ca4238061b41a3f57cf1be8f82f
+guid: 1ee65767c0ffefd418f2670be063cd56
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1925417606565882268
-    second: spr_player_right_attack_0
+      213: -3878219796082207609
+    second: Siderun_0
   - first:
-      213: 1228504236542681798
-    second: spr_player_right_attack_1
+      213: -5105220649851771969
+    second: Siderun_1
   - first:
-      213: 3861819835043493671
-    second: spr_player_right_attack_2
+      213: 6844148090085470348
+    second: Siderun_2
   - first:
-      213: 239768519284618219
-    second: spr_player_right_attack_3
+      213: 6423362571370750110
+    second: Siderun_3
   - first:
-      213: -291539360863411257
-    second: spr_player_right_attack_4
+      213: -8395246921165824359
+    second: Siderun_4
   - first:
-      213: -4393288114827582582
-    second: spr_player_right_attack_5
+      213: 7391416641512467006
+    second: Siderun_5
   - first:
-      213: -1610358376348479289
-    second: spr_player_right_attack_6
+      213: -2195962319136958775
+    second: Siderun_6
   - first:
-      213: 4108624642752802163
-    second: spr_player_right_attack_7
+      213: 718721426773617628
+    second: Siderun_7
+  - first:
+      213: -3680473624469217191
+    second: Siderun_8
+  - first:
+      213: 3398952240027851174
+    second: Siderun_9
+  - first:
+      213: -5597121184259830320
+    second: Siderun_10
+  - first:
+      213: -7766522376658665349
+    second: Siderun_11
+  - first:
+      213: -4061110317479189655
+    second: Siderun_12
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spr_player_right_attack_0
+      name: Siderun_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 17
-        width: 17
-        height: 26
+        x: 0
+        y: 2
+        width: 720
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c9964a3ac1578ba10800000000000000
-      internalID: 1925417606565882268
+      spriteID: 784d1a5a4abcd2ac0800000000000000
+      internalID: -3878219796082207609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_player_right_attack_1
+      name: Siderun_1
       rect:
         serializedVersion: 2
-        x: 87
-        y: 17
-        width: 17
-        height: 26
+        x: 720
+        y: 2
+        width: 720
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6c2603028168c0110800000000000000
-      internalID: 1228504236542681798
+      spriteID: fb3a8991edc9629b0800000000000000
+      internalID: -5105220649851771969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_player_right_attack_2
+      name: Siderun_2
       rect:
         serializedVersion: 2
-        x: 151
-        y: 17
-        width: 28
-        height: 26
+        x: 1440
+        y: 2
+        width: 720
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 727335edda0f79530800000000000000
-      internalID: 3861819835043493671
+      spriteID: c8076b31d6c4bfe50800000000000000
+      internalID: 6844148090085470348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_player_right_attack_3
+      name: Siderun_3
       rect:
         serializedVersion: 2
-        x: 215
-        y: 17
-        width: 39
-        height: 26
+        x: 2160
+        y: 2
+        width: 720
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,20 +217,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be3f74ca234d35300800000000000000
-      internalID: 239768519284618219
+      spriteID: e90e71ae93e542950800000000000000
+      internalID: 6423362571370750110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_player_right_attack_4
+      name: Siderun_4
       rect:
         serializedVersion: 2
-        x: 279
-        y: 17
-        width: 32
-        height: 26
+        x: 2880
+        y: 2
+        width: 720
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,20 +239,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c321b5fe7e34fbf0800000000000000
-      internalID: -291539360863411257
+      spriteID: 99e1836b7671e7b80800000000000000
+      internalID: -8395246921165824359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_player_right_attack_5
+      name: Siderun_5
       rect:
         serializedVersion: 2
-        x: 310
-        y: 21
-        width: 8
-        height: 10
+        x: 3600
+        y: 2
+        width: 720
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,20 +261,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a83a1c77cb7e703c0800000000000000
-      internalID: -4393288114827582582
+      spriteID: e3ae2482646939660800000000000000
+      internalID: 7391416641512467006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_player_right_attack_6
+      name: Siderun_6
       rect:
         serializedVersion: 2
-        x: 341
-        y: 17
-        width: 40
-        height: 26
+        x: 4320
+        y: 2
+        width: 720
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +283,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c09ca8b69bd6a9e0800000000000000
-      internalID: -1610358376348479289
+      spriteID: 9c6d2bbc7ef5681e0800000000000000
+      internalID: -2195962319136958775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_player_right_attack_7
+      name: Siderun_7
       rect:
         serializedVersion: 2
-        x: 400
-        y: 17
-        width: 24
-        height: 26
+        x: 5040
+        y: 2
+        width: 720
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,8 +305,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 37d62ba1854c40930800000000000000
-      internalID: 4108624642752802163
+      spriteID: cdbad47645969f900800000000000000
+      internalID: 718721426773617628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Siderun_8
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 2
+        width: 720
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95061501db45cecc0800000000000000
+      internalID: -3680473624469217191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Siderun_9
+      rect:
+        serializedVersion: 2
+        x: 6480
+        y: 2
+        width: 720
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a9d06bcd018b2f20800000000000000
+      internalID: 3398952240027851174
       vertices: []
       indices: 
       edges: []
@@ -300,7 +359,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 152f99bd1533a914a960c767df8e3a26
     internalID: 0
     vertices: []
     indices: 
@@ -310,14 +369,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spr_player_right_attack_0: 1925417606565882268
-      spr_player_right_attack_1: 1228504236542681798
-      spr_player_right_attack_2: 3861819835043493671
-      spr_player_right_attack_3: 239768519284618219
-      spr_player_right_attack_4: -291539360863411257
-      spr_player_right_attack_5: -4393288114827582582
-      spr_player_right_attack_6: -1610358376348479289
-      spr_player_right_attack_7: 4108624642752802163
+      Siderun_0: -3878219796082207609
+      Siderun_1: -5105220649851771969
+      Siderun_2: 6844148090085470348
+      Siderun_3: 6423362571370750110
+      Siderun_4: -8395246921165824359
+      Siderun_5: 7391416641512467006
+      Siderun_6: -2195962319136958775
+      Siderun_7: 718721426773617628
+      Siderun_8: -3680473624469217191
+      Siderun_9: 3398952240027851174
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

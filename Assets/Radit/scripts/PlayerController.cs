@@ -4,54 +4,71 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 1f;
 
-    private PlayerControls playerControls;
-    private Vector2 movement;
+    public Animator anim;
+    public float moveSpeed;
+
+    private Vector2 input;
+    private bool moving;
+
     private Rigidbody2D rb;
-    private Animator myAnimator;
-    private SpriteRenderer mySpriteRender;
 
+    private float x;
+    private float y;
 
-    private void Awake() {
-        playerControls = new PlayerControls();
+     private void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
-        myAnimator = GetComponent<Animator>();
-        mySpriteRender = GetComponent<SpriteRenderer>();
-    }
+        anim = GetComponent<Animator>();
 
-    private void OnEnable() {
-        playerControls.Enable();
-    }
-
-    private void Update() {
-        PlayerInput();
-    }
-
-    private void FixedUpdate() {
-        AdjustPlayerFacingDirection();
-        Move();
-    }
-
-    private void PlayerInput() {
-        movement = playerControls.Movement.Move.ReadValue<Vector2>();
-
-        myAnimator.SetFloat("moveX", movement.x);
-        myAnimator.SetFloat("moveY", movement.y);
-    }
-
-    private void Move() {
-        rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
-    }
-
-    private void AdjustPlayerFacingDirection() {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
-
-        if (mousePos.x < playerScreenPoint.x) {
-            mySpriteRender.flipX = true;
-        } else {
-            mySpriteRender.flipX = false;
+        if (anim == null) // If Animator is missing, show a warning
+        {
+        Debug.LogWarning("Animator component is missing on " + gameObject.name);
+        }
+         else
+        {
+        Debug.Log("Animator found on " + gameObject.name);
         }
     }
+
+    private void Update()
+    {
+        GetInput();
+        Animate();
+    }
+
+    private void FixedUpdate()
+    {
+        rb.linearVelocity = new Vector3(x * moveSpeed, y * moveSpeed);
+    }
+
+    private void GetInput()
+    {
+        x = Input.GetAxisRaw("Horizontal");
+        y = Input.GetAxisRaw("Vertical");
+
+        input = new Vector2(x, y);
+        input.Normalize(); // Normalize to ensure magnitude is 1 when moving
+
+    }  
+
+    private void Animate()
+    {
+        moving = input.magnitude > 0.1f; // Check if player is moving
+
+        anim.SetBool("moving", moving); // Use the correct parameter name
+
+        if (moving) 
+        {
+            anim.SetFloat("X", x);
+            anim.SetFloat("Y", y);
+        }
+        else
+        {
+            // Reset X and Y to 0 when idle
+            anim.SetFloat("X", 0);
+            anim.SetFloat("Y", 0);
+        }
+    }    
+    
 }
