@@ -19,16 +19,7 @@ public class PlayerController : MonoBehaviour
      private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-
-        if (anim == null) // If Animator is missing, show a warning
-        {
-        Debug.LogWarning("Animator component is missing on " + gameObject.name);
-        }
-         else
-        {
-        Debug.Log("Animator found on " + gameObject.name);
-        }
+        
     }
 
     private void Update()
@@ -55,6 +46,8 @@ public class PlayerController : MonoBehaviour
     private void Animate()
     {
         moving = input.magnitude > 0.1f; // Check if player is moving
+
+        Debug.Log($"Moving: {moving}, X: {x}, Y: {y}");
 
         anim.SetBool("moving", moving); // Use the correct parameter name
 
