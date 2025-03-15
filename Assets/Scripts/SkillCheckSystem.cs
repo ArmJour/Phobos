@@ -1,21 +1,28 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class SkillCheckSystem : MonoBehaviour
 {
-    public GameObject skillCheckUI; // UI untuk Skill Check
-    public Image skillCheckBar; // Lingkaran Skill Check
-    public Image needle; // Jarum yang berputar
+    public Image needle; // Gambar jarum (Needle)
+    public Image hitZoneVisual; // Gambar visualisasi zona hit
     public float needleSpeed = 200f; // Kecepatan jarum
 
     private bool isSkillCheckActive = false;
     private float needleAngle = 0f;
+    private int remainingSkillChecks; // Jumlah Skill Check yang tersisa
     private float hitZoneSize; // Ukuran area hit zone
-    private int skillCheckCount; // Jumlah Skill Check yang diperlukan
-    private int currentSkillCheck; // Skill Check saat ini
-    private int totalDamage; // Total damage yang akan diberikan
-    private Action<int> onSkillCheckComplete; // Callback setelah Skill Check selesai
+    private float currentHitZoneStart; // Zona hit saat ini
+    private float currentHitZoneEnd; // Zona hit saat ini
+    private int damage; // Damage yang akan diberikan
+    private System.Action<int> onSkillCheckComplete; // Callback setelah Skill Check selesai
+
+    void Start()
+    {
+        // Nonaktifkan Skill Check saat game dimulai
+        isSkillCheckActive = false;
+        hitZoneVisual.gameObject.SetActive(false);
+        needle.gameObject.SetActive(false);
+    }
 
     void Update()
     {
@@ -34,45 +41,94 @@ public class SkillCheckSystem : MonoBehaviour
         }
     }
 
-    public void StartSkillCheck(float zoneSize, int count, int damage, Action<int> onComplete)
+    // Method untuk memulai Skill Check
+    public void StartSkillCheck(float zoneSize, int skillCheckCount, int damage, System.Action<int> onComplete)
     {
-        hitZoneSize = zoneSize;
-        skillCheckCount = count;
-        currentSkillCheck = 0;
-        totalDamage = damage;
-        onSkillCheckComplete = onComplete;
-        skillCheckUI.SetActive(true);
+        this.hitZoneSize = zoneSize;
+        this.remainingSkillChecks = skillCheckCount;
+        this.damage = damage;
+        this.onSkillCheckComplete = onComplete;
+
         isSkillCheckActive = true;
-        needleAngle = 0f; // Reset jarum
+        StartNextSkillCheck();
     }
 
-    void CheckSkillCheckResult()
+    // Method untuk memulai Skill Check berikutnya
+    private void StartNextSkillCheck()
+    {
+        if (remainingSkillChecks > 0)
+        {
+            // Reset rotasi jarum
+            needleAngle = 0f;
+            needle.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            // Tentukan zona hit secara random di sekitar lingkaran
+            float hitZoneCenter = Random.Range(0f, 360f); // Zona hit random
+            currentHitZoneStart = hitZoneCenter - hitZoneSize / 2;
+            currentHitZoneEnd = hitZoneCenter + hitZoneSize / 2;
+
+            // Update visualisasi zona hit
+            UpdateHitZoneVisual(hitZoneCenter, hitZoneSize);
+
+            Debug.Log($"Skill Check {remainingSkillChecks} dimulai! Zona: {currentHitZoneStart} - {currentHitZoneEnd}");
+        }
+        else
+        {
+            // Selesai Skill Check
+            isSkillCheckActive = false;
+            hitZoneVisual.gameObject.SetActive(false); // Nonaktifkan visualisasi zona hit
+            onSkillCheckComplete?.Invoke(damage); // Berikan damage ke musuh
+            Debug.Log("Skill Check selesai!");
+        }
+    }
+
+    // Method untuk mengupdate visualisasi zona hit
+    private void UpdateHitZoneVisual(float center, float size)
+    {
+        if (hitZoneVisual != null)
+        {
+            // Aktifkan visualisasi zona hit
+            hitZoneVisual.gameObject.SetActive(true);
+
+            // Atur rotasi zona hit
+            hitZoneVisual.transform.rotation = Quaternion.Euler(0, 0, -center);
+
+            // Atur ukuran zona hit
+            RectTransform rectTransform = hitZoneVisual.GetComponent<RectTransform>();
+            rectTransform.sizeDelta = new Vector2(size, size);
+        }
+    }
+
+    // Method untuk mengecek hasil Skill Check
+    private void CheckSkillCheckResult()
     {
         float hitPosition = needleAngle;
-        float hitZoneStart = 180f - hitZoneSize / 2;
-        float hitZoneEnd = 180f + hitZoneSize / 2;
 
-        if (hitPosition >= hitZoneStart && hitPosition <= hitZoneEnd)
+        if (hitPosition >= currentHitZoneStart && hitPosition <= currentHitZoneEnd)
         {
             Debug.Log("Hit!");
-            currentSkillCheck++;
-            if (currentSkillCheck >= skillCheckCount)
-            {
-                // Berikan damage setelah semua Skill Check selesai
-                onSkillCheckComplete?.Invoke(totalDamage);
-                EndSkillCheck();
-            }
         }
         else
         {
             Debug.Log("Miss!");
-            EndSkillCheck();
         }
-    }
 
-    void EndSkillCheck()
-    {
-        isSkillCheckActive = false;
-        skillCheckUI.SetActive(false);
+        // Kurangi jumlah Skill Check yang tersisa
+        remainingSkillChecks--;
+
+        if (remainingSkillChecks > 0)
+        {
+            // Mulai Skill Check berikutnya
+            StartNextSkillCheck();
+        }
+        else
+        {
+            // Selesai Skill Check
+            isSkillCheckActive = false;
+            hitZoneVisual.gameObject.SetActive(false); // Nonaktifkan visualisasi zona hit
+            needle.gameObject.SetActive(false); // Nonaktifkan jarum
+            onSkillCheckComplete?.Invoke(damage); // Berikan damage ke musuh
+            Debug.Log("Skill Check selesai!");
+        }
     }
 }
