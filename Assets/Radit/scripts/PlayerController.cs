@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         GetInput();
-        Animate();
+        RaditAnimate();
     }
 
     private void FixedUpdate()
@@ -52,16 +52,18 @@ public class PlayerController : MonoBehaviour
 
     }  
 
-    private void Animate()
+    private void RaditAnimate()
     {
         moving = input.magnitude > 0.1f; // Check if player is moving
 
         anim.SetBool("moving", moving); // Use the correct parameter name
+        Debug.Log($"Moving: {moving}, X: {x}, Y: {y}");
 
         if (moving) 
         {
             anim.SetFloat("X", x);
             anim.SetFloat("Y", y);
+
         }
         else
         {
