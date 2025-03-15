@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6c8f33732e1d5b24fb7ba4f4541f9b2d
+guid: 6357199fffcac484583081d9e3fc4dd1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8163352764613255477
-    second: Player not smiling_0
+      213: 8030687220924268811
+    second: Attack4_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player not smiling_0
+      name: Attack4_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 640
-        height: 640
+        x: 143
+        y: 44
+        width: 294
+        height: 488
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bce160179e1f5be80800000000000000
-      internalID: -8163352764613255477
+      spriteID: b01c571aa7bb27f60800000000000000
+      internalID: 8030687220924268811
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Player not smiling_0: -8163352764613255477
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

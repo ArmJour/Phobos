@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b27b1a9411827104397317c5ef12052a
+guid: c8133d9957160f942b65d9bc90cdbf90
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8656379367904076180
-    second: Player smile normal_0
+      213: -3236675104909177313
+    second: Attack3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player smile normal_0
+      name: Attack3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 640
-        height: 640
+        x: 284
+        y: 55
+        width: 179
+        height: 582
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 49161f0fb23a12870800000000000000
-      internalID: 8656379367904076180
+      spriteID: f1ec98604250513d0800000000000000
+      internalID: -3236675104909177313
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Player smile normal_0: 8656379367904076180
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
