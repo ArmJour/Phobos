@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: e86c1c4f3daa65848b5b47c6afa87daa
+guid: bbd68d41c13e1ba40ad58b4ac3215df0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1097303127264611488
-    second: Needle_Skill_Check-removebg-preview-removebg-preview (1)_0
-  - first:
-      213: 3922257102399451329
-    second: Needle_Skill_Check-removebg-preview-removebg-preview (1)_1
-  - first:
-      213: 5596094122523097754
-    second: Needle_Skill_Check-removebg-preview-removebg-preview (1)_2
+      213: 3123164566522875632
+    second: BACKGROUND BATTLE_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Needle_Skill_Check-removebg-preview-removebg-preview (1)_0
+      name: BACKGROUND BATTLE_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 449
-        width: 16
-        height: 50
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 063b7789e9895c0f0800000000000000
-      internalID: -1097303127264611488
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Needle_Skill_Check-removebg-preview-removebg-preview (1)_1
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 26
-        width: 27
-        height: 418
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1c0b54abd08ae6630800000000000000
-      internalID: 3922257102399451329
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Needle_Skill_Check-removebg-preview-removebg-preview (1)_2
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 14
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a9af3ae74f159ad40800000000000000
-      internalID: 5596094122523097754
+      spriteID: 0fecea240a5b75b20800000000000000
+      internalID: 3123164566522875632
       vertices: []
       indices: 
       edges: []
@@ -185,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Needle_Skill_Check-removebg-preview-removebg-preview (1)_0: -1097303127264611488
-      Needle_Skill_Check-removebg-preview-removebg-preview (1)_1: 3922257102399451329
-      Needle_Skill_Check-removebg-preview-removebg-preview (1)_2: 5596094122523097754
+      BACKGROUND BATTLE_0: 3123164566522875632
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
