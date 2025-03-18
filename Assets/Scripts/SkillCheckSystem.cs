@@ -20,6 +20,7 @@ public class SkillCheckSystem : MonoBehaviour
     {
         // Nonaktifkan Skill Check saat game dimulai
         isSkillCheckActive = false;
+        
         hitZoneVisual.gameObject.SetActive(false);
         needle.gameObject.SetActive(false);
     }
