@@ -7,11 +7,13 @@ public class PlayerController : MonoBehaviour
 
     public Animator anim;
     public float moveSpeed;
+    public GameObject GFX; 
 
     private Vector2 input;
     private bool moving;
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     private float x;
     private float y;
@@ -19,6 +21,8 @@ public class PlayerController : MonoBehaviour
      private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+         if (GFX != null)
+            spriteRenderer = GFX.GetComponent<SpriteRenderer>();
         
     }
 
@@ -26,11 +30,12 @@ public class PlayerController : MonoBehaviour
     {
         GetInput();
         RaditAnimate();
+        
     }
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector3(x * moveSpeed, y * moveSpeed);
+        rb.linearVelocity = new Vector2(x * moveSpeed, y * moveSpeed);
     }
 
     private void GetInput()
@@ -50,20 +55,23 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Moving: {moving}, X: {x}, Y: {y}");
 
         anim.SetBool("moving", moving); // Use the correct parameter name
-        Debug.Log($"Moving: {moving}, X: {x}, Y: {y}");
 
         if (moving) 
         {
             anim.SetFloat("X", x);
             anim.SetFloat("Y", y);
 
+            // 🔥 Flip sprite based on movement direction 🔥
+            if (x > 0) 
+                spriteRenderer.flipX = true;  // Face right ✅
+            else if (x < 0) 
+                spriteRenderer.flipX = false;
         }
         else
         {
             // Reset X and Y to 0 when idle
             anim.SetFloat("X", 0);
             anim.SetFloat("Y", 0);
-        }
-    }    
-    
+        }    
+    }
 }
