@@ -10,6 +10,7 @@ public class PlayerCombatActions : MonoBehaviour
     void Start()
     {
         battleSystem = FindFirstObjectByType<BattleSystem>();
+        currentBoss = FindFirstObjectByType<Boss>();
         currentBoss = battleSystem.GetCurrentBoss();
     }
 

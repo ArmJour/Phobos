@@ -3,10 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class BossInteraction : MonoBehaviour
 {
-    public LevelLoader LevelLoader;
-    public GameObject promptText; // Assign UI Text ke sini
-    public string battleSceneName = "BattleScene"; // Nama scene battle
-    public int bossIndex; // 0 untuk Boss1, 1 untuk Boss2
+    private LevelLoader LevelLoader;
+    [SerializeField] private GameObject promptText; // Assign UI Text ke sini
+    [SerializeField] int bossIndex; // 0 untuk Boss1, 1 untuk Boss2
 
     private bool isPlayerInRange = false;
 
@@ -14,7 +13,6 @@ public class BossInteraction : MonoBehaviour
     private void Start()
     {
         LevelLoader = FindFirstObjectByType<LevelLoader>();
-
     }
     void Update()
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BattleSystem : MonoBehaviour
 {
-    public Boss[] bosses;
+    public Boss[] bosses = new Boss[2];
     private int currentBossIndex = 0;
     private bool isPlayerTurn = true;
     private int extraTurns = 0;
