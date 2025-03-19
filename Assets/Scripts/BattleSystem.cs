@@ -20,9 +20,12 @@ public class BattleSystem : MonoBehaviour
 
     void StartBattle()
     {
+        int currentBossIndex = PlayerPrefs.GetInt("CurrentBossIndex", 0);
         // Inisialisasi battle (panggil dari trigger interact)
         boss1.SetActive(false);
         boss2.SetActive(false);// Atau sesuai progress
+        boss1.SetActive(currentBossIndex == 0);
+        boss2.SetActive(currentBossIndex == 1);
     }
 
     public void StartBossBattle(int bossIndex)
