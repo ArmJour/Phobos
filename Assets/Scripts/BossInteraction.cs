@@ -1,13 +1,15 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BossInteraction : MonoBehaviour
 {
-    private LevelLoader LevelLoader;
-    [SerializeField] private GameObject promptText; // Assign UI Text ke sini
-    [SerializeField] int bossIndex; // 0 untuk Boss1, 1 untuk Boss2
+    public int bossIndex;
+    LevelLoader LevelLoader;
+    public GameObject interactPrompt; // Assign UI Text "Press E"
 
-    private bool isPlayerInRange = false;
+
+    private bool isInRange;
 
 
     private void Start()
@@ -16,33 +18,29 @@ public class BossInteraction : MonoBehaviour
     }
     void Update()
     {
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        if (isInRange && Input.GetKeyDown(KeyCode.E))
         {
-            // Simpan index boss yang diinteract
             PlayerPrefs.SetInt("CurrentBossIndex", bossIndex);
-            // Pindah ke scene battle
             LevelLoader.LoadBattleView();
-            Debug.Log("pressing E");
         }
     }
 
-    // Saat player masuk area trigger
-    private void OnTriggerEnter2D(Collider2D other)
+
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            promptText.SetActive(true);
-            isPlayerInRange = true;
+            interactPrompt.SetActive(true);
+            isInRange = true;
         }
     }
 
-    // Saat player keluar area trigger
-    private void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            promptText.SetActive(false);
-            isPlayerInRange = false;
+            interactPrompt.SetActive(false);
+            isInRange = false;
         }
     }
 }
