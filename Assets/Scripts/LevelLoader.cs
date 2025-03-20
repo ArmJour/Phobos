@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    public Animator transition;
+    [SerializeField] private Animator transition;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            LoadBattleView();
+            LoadBattleView(2);
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
@@ -20,11 +20,9 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    public void LoadBattleView()
+    public void LoadBattleView(int scene)
     {
-        
-            StartCoroutine(LoadScene(2)); // battle scene
-        
+        StartCoroutine(LoadScene(scene)); // battle scene   
     }
     public void LoadMenuView()
     {

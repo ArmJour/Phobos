@@ -5,23 +5,28 @@ using UnityEngine.SceneManagement;
 public class BossInteraction : MonoBehaviour
 {
     public int bossIndex;
-    LevelLoader LevelLoader;
-    public GameObject interactPrompt; // Assign UI Text "Press E"
-
+    [SerializeField] private LevelLoader levelLoader;
+    public GameObject interactPrompt; // Assign UI Text "Press E
 
     private bool isInRange;
 
-
     private void Start()
     {
-        LevelLoader = FindFirstObjectByType<LevelLoader>();
+        levelLoader = FindFirstObjectByType<LevelLoader>();
     }
     void Update()
     {
         if (isInRange && Input.GetKeyDown(KeyCode.E))
         {
-            PlayerPrefs.SetInt("CurrentBossIndex", bossIndex);
-            LevelLoader.LoadBattleView();
+            if (levelLoader != null) // Tambahkan pengecekan null
+            {
+                PlayerPrefs.SetInt("CurrentBossIndex", bossIndex);
+                levelLoader.LoadBattleView(2);
+            }
+            else
+            {
+                Debug.LogError("LevelLoader tidak ditemukan!");
+            }
         }
     }
 

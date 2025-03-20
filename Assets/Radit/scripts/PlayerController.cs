@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     {
         moving = input.magnitude > 0.1f; // Check if player is moving
 
-        Debug.Log($"Moving: {moving}, X: {x}, Y: {y}");
+        // Debug.Log($"Moving: {moving}, X: {x}, Y: {y}");
 
         anim.SetBool("moving", moving); // Use the correct parameter name
 
