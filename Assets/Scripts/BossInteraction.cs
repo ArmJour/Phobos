@@ -1,48 +1,50 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BossInteraction : MonoBehaviour
 {
-    private LevelLoader LevelLoader;
-    [SerializeField] private GameObject promptText; // Assign UI Text ke sini
-    [SerializeField] int bossIndex; // 0 untuk Boss1, 1 untuk Boss2
+    // ======= ORIGINAL CODE =======
+    public int bossIndex;
+    public GameObject interactPrompt; // Assign UI Text "Press E"
 
-    private bool isPlayerInRange = false;
+    // ======= FITUR BARU: Transisi =======
+    public Animator sceneTransition; // Assign animator fade
 
+    private bool isInRange;
 
-    private void Start()
-    {
-        LevelLoader = FindFirstObjectByType<LevelLoader>();
-    }
     void Update()
     {
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        if (isInRange && Input.GetKeyDown(KeyCode.E))
         {
-            // Simpan index boss yang diinteract
             PlayerPrefs.SetInt("CurrentBossIndex", bossIndex);
-            // Pindah ke scene battle
-            LevelLoader.LoadBattleView();
-            Debug.Log("pressing E");
+            StartCoroutine(LoadBattleScene());
         }
     }
 
-    // Saat player masuk area trigger
-    private void OnTriggerEnter2D(Collider2D other)
+    // ======= FITUR BARU: Transisi Animasi =======
+    IEnumerator LoadBattleScene()
+    {
+        sceneTransition.SetTrigger("FadeOut");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("BattleScene");
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            promptText.SetActive(true);
-            isPlayerInRange = true;
+            interactPrompt.SetActive(true);
+            isInRange = true;
         }
     }
 
-    // Saat player keluar area trigger
-    private void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            promptText.SetActive(false);
-            isPlayerInRange = false;
+            interactPrompt.SetActive(false);
+            isInRange = false;
         }
     }
 }

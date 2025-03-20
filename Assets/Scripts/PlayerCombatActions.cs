@@ -1,61 +1,51 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class PlayerCombatActions : MonoBehaviour
 {
-    private BattleSystem battleSystem; // Reference ke sistem battle
-    private int fearMeter; // 0-15
+    private BattleSystem battleSystem;
     private Boss currentBoss;
+    private int fearMeter;
 
     void Start()
     {
         battleSystem = FindFirstObjectByType<BattleSystem>();
-        currentBoss = FindFirstObjectByType<Boss>();
         currentBoss = battleSystem.GetCurrentBoss();
+        fearMeter = 0; // Fear meter selalu mulai dari 0
     }
 
-    // Method untuk update Fear Meter (pastikan clamp 0-15)
-    public void UpdateFearMeter(int amount)
-    {
-        fearMeter = Mathf.Clamp(fearMeter + amount, 0, 15);
-        // Trigger SFX bernafas jika fearMeter berkurang (sesuaikan dengan kebutuhan)
-        if (amount < 0) Debug.Log("SFX: Bernafas");
-    }
-
-    // ==== DAFTAR MOVE ====
+    // ======= MOVE 1-6 ======= (ORIGINAL CODE)
     public void Move1()
     {
         int damage = Random.Range(0, 21);
         currentBoss.TakeDamage(damage);
-        Debug.Log($"Move 1: Damage {damage}");
+        Debug.Log($"Serangan dasar! Damage: {damage}");
     }
 
     public void Move2()
     {
         currentBoss.TakeDamage(10);
-        currentBoss.ApplyMissDebuff(25); // 25% chance miss
-        Debug.Log("Move 2: Damage 10 + Apply Miss Debuff");
+        currentBoss.ApplyMissDebuff(25);
+        Debug.Log("Serangan presisi! Damage 10 + 25% musuh meleset");
     }
 
     public void Move3()
     {
         int reduceAmount = Random.Range(1, 4);
         UpdateFearMeter(-reduceAmount);
-        Debug.Log($"Move 3: Fear -{reduceAmount}");
+        Debug.Log($"Menenangkan diri! Fear -{reduceAmount}");
     }
 
     public void Move4()
     {
-        // Kosongkan dulu atau tambahkan placeholder
-        Debug.LogWarning("Move4 belum diimplementasi!");
+        Debug.Log("Move4 (placeholder)");
     }
 
     public void Move5()
     {
         int reduceAmount = Random.Range(2, 6);
         UpdateFearMeter(-reduceAmount);
-        battleSystem.GrantExtraTurn(); // Beri extra turn
-        Debug.Log($"Move 5: Fear -{reduceAmount} + Extra Turn");
+        battleSystem.GrantExtraTurn();
+        Debug.Log($"Persiapan khusus! Fear -{reduceAmount} + Extra turn");
     }
 
     public void Move6()
@@ -63,6 +53,19 @@ public class PlayerCombatActions : MonoBehaviour
         int damage = Random.Range(20, 101);
         currentBoss.TakeDamage(damage);
         UpdateFearMeter(-7);
-        Debug.Log($"Move 6: Damage {damage} + Fear -7");
+        Debug.Log($"Serangan putus asa! Damage {damage} + Fear -7");
+    }
+
+    // ======= FITUR BARU: Fear Meter System =======
+    public void UpdateFearMeter(int amount)
+    {
+        fearMeter = Mathf.Clamp(fearMeter + amount, 0, 15);
+        battleSystem.UpdateFearUI(fearMeter); // Update UI
+
+        if (fearMeter >= 15)
+        {
+            Debug.Log("Game Over! Fear meter penuh");
+            // Tambahkan logika game over
+        }
     }
 }
