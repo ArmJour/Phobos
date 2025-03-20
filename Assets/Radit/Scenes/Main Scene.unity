@@ -444,7 +444,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossIndex: 0
   interactPrompt: {fileID: 451344330}
-  sceneTransition: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,7 +1511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8304485977105067844, guid: 264033264e99df74ba25b33e2c11d8cd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
