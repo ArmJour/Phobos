@@ -4,27 +4,31 @@ using UnityEngine.SceneManagement;
 
 public class BossInteraction : MonoBehaviour
 {
+    // ======= ORIGINAL CODE =======
     public int bossIndex;
-    LevelLoader LevelLoader;
     public GameObject interactPrompt; // Assign UI Text "Press E"
 
+    // ======= FITUR BARU: Transisi =======
+    public Animator sceneTransition; // Assign animator fade
 
     private bool isInRange;
 
-
-    private void Start()
-    {
-        LevelLoader = FindFirstObjectByType<LevelLoader>();
-    }
     void Update()
     {
         if (isInRange && Input.GetKeyDown(KeyCode.E))
         {
             PlayerPrefs.SetInt("CurrentBossIndex", bossIndex);
-            LevelLoader.LoadBattleView();
+            StartCoroutine(LoadBattleScene());
         }
     }
 
+    // ======= FITUR BARU: Transisi Animasi =======
+    IEnumerator LoadBattleScene()
+    {
+        sceneTransition.SetTrigger("FadeOut");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("BattleScene");
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
