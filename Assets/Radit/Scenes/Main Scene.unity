@@ -419,10 +419,14 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Offset: {x: -0.04386139, y: -1.2582235}
 =======
   m_Offset: {x: -0.043862343, y: -5.05}
 >>>>>>> 8ceec08f283cb3ceccf68dedbaebfa2c4c1186de
+=======
+  m_Offset: {x: -0.043862343, y: -4.719692}
+>>>>>>> parent of e1469b5 (Update Main Scene.unity)
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -433,10 +437,14 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Size: {x: 63.366768, y: 25.376436}
 =======
   m_Size: {x: 63.366768, y: 42.22}
 >>>>>>> 8ceec08f283cb3ceccf68dedbaebfa2c4c1186de
+=======
+  m_Size: {x: 63.366768, y: 32.299374}
+>>>>>>> parent of e1469b5 (Update Main Scene.unity)
   m_EdgeRadius: 0
 --- !u!114 &467177825
 MonoBehaviour:
