@@ -22,14 +22,8 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadBattleView()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 0) 
-        {
+        
             StartCoroutine(LoadScene(2)); // battle scene
-        }
-        else
-        {
-            StartCoroutine(LoadScene(1)); // main scene
-        }
         
     }
     public void LoadMenuView()
