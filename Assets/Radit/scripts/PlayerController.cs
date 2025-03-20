@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public float moveSpeed;
     public GameObject GFX; 
-
     private Vector2 input;
     private bool moving;
 
