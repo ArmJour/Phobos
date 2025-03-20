@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossIndex: 1
-  LevelLoader: {fileID: 1024220225}
+  levelLoader: {fileID: 0}
   interactPrompt: {fileID: 489242898}
 --- !u!61 &596294556
 BoxCollider2D:
@@ -1981,7 +1981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8304485977105067844, guid: 264033264e99df74ba25b33e2c11d8cd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4380209527f917547b1d288b6957aaed
+guid: aeecd30ca90bad049baf8b13fc75de0e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4095588236798293675
-    second: Tak berjudul123_20250316134033_0
+      213: -6507961184919559844
+    second: Psikiater_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tak berjudul123_20250316134033_0
+      name: Psikiater_0
       rect:
         serializedVersion: 2
-        x: 291
-        y: 299
-        width: 414
-        height: 417
+        x: 414
+        y: 53
+        width: 491
+        height: 1138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5598e5fa23c8927c0800000000000000
-      internalID: -4095588236798293675
+      spriteID: c51e6d078c31fa5a0800000000000000
+      internalID: -6507961184919559844
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Tak berjudul123_20250316134033_0: -4095588236798293675
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

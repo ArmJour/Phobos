@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4380209527f917547b1d288b6957aaed
+guid: 1776bf8cc7816444a91d21b64e896bb5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4095588236798293675
-    second: Tak berjudul123_20250316134033_0
+      213: 7235495384446832826
+    second: Mentahan bg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tak berjudul123_20250316134033_0
+      name: Mentahan bg_0
       rect:
         serializedVersion: 2
-        x: 291
-        y: 299
-        width: 414
-        height: 417
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5598e5fa23c8927c0800000000000000
-      internalID: -4095588236798293675
+      spriteID: ab09ee387b4a96460800000000000000
+      internalID: 7235495384446832826
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Tak berjudul123_20250316134033_0: -4095588236798293675
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
