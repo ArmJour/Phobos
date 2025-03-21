@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class BattleSystem : MonoBehaviour
 {
@@ -10,6 +9,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private Boss boss1;
     [SerializeField] private Boss boss2;
     private PlayerCombatActions playerActions;
+    private Boss currentBoss;
+    private LevelLoader levelLoader;
 
     // ========== UI REFERENCES ==========
     [Header("UI References")]
@@ -21,7 +22,6 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private int maxFear = 15;
 
     // ========== STATUS BATTLE ==========
-    private Boss currentBoss;
     public bool isPlayerTurn = true;
     private int currentBossIndex;
     private int extraTurns = 0;
@@ -30,6 +30,7 @@ public class BattleSystem : MonoBehaviour
     {
         StartCoroutine(StartBattle());
         currentBoss = FindFirstObjectByType<Boss>();
+        levelLoader = FindFirstObjectByType<LevelLoader>();
     }
 
     // ========== INISIALISASI BATTLE ==========
@@ -126,7 +127,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator ReturnToMainScene(bool isWin)
     {
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(isWin ? "MainScene" : "GameOverScene");
+        levelLoader.LoadSpawnView();
     }
 
     // ========== UI UPDATES ==========

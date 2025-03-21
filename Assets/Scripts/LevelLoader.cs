@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +23,7 @@ public class LevelLoader : MonoBehaviour
     {
         StartCoroutine(LoadScene(scene)); // battle scene   
     }
+
     public void LoadMenuView()
     {
         if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
@@ -34,6 +34,11 @@ public class LevelLoader : MonoBehaviour
         {
             StartCoroutine(LoadScene(1)); // main scene
         }
+    }
+
+    public void LoadSpawnView()
+    {
+        StartCoroutine(LoadScene(4));
     }
     public void LoadMainView()
     {

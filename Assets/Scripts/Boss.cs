@@ -27,6 +27,7 @@ public class Boss : MonoBehaviour
     private Coroutine currentRoutine;
     private PlayerCombatActions player;
     private BattleSystem battleSystem;
+    private LevelLoader levelLoader;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class Boss : MonoBehaviour
         currentHP = maxHP;
         player = FindFirstObjectByType<PlayerCombatActions>();
         battleSystem = FindFirstObjectByType<BattleSystem>();
+        levelLoader = FindFirstObjectByType<LevelLoader>();
     }
 
     // ========== COMBAT SYSTEM ==========
@@ -51,9 +53,10 @@ public class Boss : MonoBehaviour
         if (currentHP <= 0) HandleDefeat();
     }
 
-    void HandleDefeat()
+    void HandleDefeat() // INI PAS BOSS DIKALAHKAN
     {
         Debug.Log("BOSS DIKALAHKAN!");
+        levelLoader.LoadSpawnView();
         // Tambahkan logika kemenangan di sini
     }
 
