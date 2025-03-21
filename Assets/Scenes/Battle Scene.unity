@@ -596,22 +596,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe56024b784c404ba6c84f93b39a2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 125
-  healthSlider: {fileID: 1682015544}
-  associatedBackground: {fileID: 8327149}
-  minFearDamage: 1
-  maxFearDamage: 3
   isBoss1: 1
-  boss1Move1Fear: 1
-  boss1Move1Turns: 3
-  boss1Move2Fear: 2
-  boss1Move2Turns: 2
-  boss1Move3Fear: 5
-  boss2Move1Fear: 3
-  boss2Move1MissChance: 30
-  boss2Move2Fear: 2
-  boss2Move3Fear: 5
-  boss2Move3Turns: 2
+  maxHP: 125
+  hpSlider: {fileID: 1682015544}
 --- !u!1 &289214016
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,22 +723,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe56024b784c404ba6c84f93b39a2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 175
-  healthSlider: {fileID: 877458101}
-  associatedBackground: {fileID: 481808397}
-  minFearDamage: 1
-  maxFearDamage: 3
   isBoss1: 0
-  boss1Move1Fear: 1
-  boss1Move1Turns: 3
-  boss1Move2Fear: 2
-  boss1Move2Turns: 2
-  boss1Move3Fear: 5
-  boss2Move1Fear: 3
-  boss2Move1MissChance: 30
-  boss2Move2Fear: 2
-  boss2Move3Fear: 5
-  boss2Move3Turns: 2
+  maxHP: 175
+  hpSlider: {fileID: 877458101}
 --- !u!1 &366621165
 GameObject:
   m_ObjectHideFlags: 0
@@ -5194,11 +5168,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96018bf62c9b3bf4686f4e708a533baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss1: {fileID: 249027602}
-  boss2: {fileID: 296716212}
-  background1: {fileID: 8327149}
-  background2: {fileID: 481808397}
+  playerUI: {fileID: 0}
+  boss1: {fileID: 249027604}
+  boss2: {fileID: 296716214}
+  playerActions: {fileID: 0}
   fearMeterSlider: {fileID: 1714181234}
+  turnDelay: 1
+  maxFear: 15
+  currentBoss: {fileID: 0}
+  isPlayerTurn: 1
 --- !u!1 &1959692032
 GameObject:
   m_ObjectHideFlags: 0
@@ -5244,6 +5222,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f09034967f0a2a4cac4b06bc9790b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  breathingSFX: {fileID: 8300000, guid: 62fa80ff99d5b3a4b90f1ef1386fbe57, type: 3}
+  fearMeter: 0
+  maxFear: 15
+  fearMeterSlider: {fileID: 1714181234}
 --- !u!1 &2009406751
 GameObject:
   m_ObjectHideFlags: 0

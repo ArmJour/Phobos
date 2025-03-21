@@ -11,16 +11,16 @@ public class Boss : MonoBehaviour
     public Slider hpSlider;        // Assign UI Slider HP
 
     [Header("Fear Settings")]
-    public int boss1Move1Fear = 1; // Fear per turn (Move1 Boss1)
-    public int boss1Move1Turns = 3;// Durasi (Move1 Boss1)
-    public int boss1Move2Fear = 2;
-    public int boss1Move2Turns = 2;
-    public int boss1Move3Fear = 5;
-    public int boss2Move1Fear = 3;
-    public float boss2Move1MissChance = 30; // % miss chance
-    public int boss2Move2Fear = 2;
-    public int boss2Move3Fear = 5;
-    public int boss2Move3Turns = 2;
+    private int boss1Move1Fear = 1; // Fear per turn (Move1 Boss1)
+    private int boss1Move1Turns = 3;// Durasi (Move1 Boss1)
+    private int boss1Move2Fear = 2;
+    private int boss1Move2Turns = 2;
+    private int boss1Move3Fear = 5;
+    private int boss2Move1Fear = 3;
+    private float boss2Move1MissChance = 30; // % miss chance
+    private int boss2Move2Fear = 2;
+    private int boss2Move3Fear = 5;
+    private int boss2Move3Turns = 2;
 
     // ========== PRIVATE VARIABLES ==========
     private int currentHP;

@@ -7,16 +7,13 @@ public class BattleSystem : MonoBehaviour
 {
     // ========== REFERENSI OBJECT ==========
     [Header("Object References")]
-    [SerializeField] private GameObject playerUI;
     [SerializeField] private Boss boss1;
     [SerializeField] private Boss boss2;
-    [SerializeField] private PlayerCombatActions playerActions;
+    private PlayerCombatActions playerActions;
 
     // ========== UI REFERENCES ==========
     [Header("UI References")]
     [SerializeField] private Slider fearMeterSlider;
-    [SerializeField] private Text turnText;
-    [SerializeField] private Text gameOverText;
 
     // ========== SYSTEM SETTINGS ==========
     [Header("Settings")]
@@ -24,7 +21,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private int maxFear = 15;
 
     // ========== STATUS BATTLE ==========
-    public Boss currentBoss;
+    private Boss currentBoss;
     public bool isPlayerTurn = true;
     private int currentBossIndex;
     private int extraTurns = 0;
@@ -32,6 +29,7 @@ public class BattleSystem : MonoBehaviour
     void Start()
     {
         StartCoroutine(StartBattle());
+        currentBoss = FindFirstObjectByType<Boss>();
     }
 
     // ========== INISIALISASI BATTLE ==========
@@ -43,8 +41,6 @@ public class BattleSystem : MonoBehaviour
 
         // Setup UI awal
         UpdateFearUI(0);
-        turnText.text = "Persiapan Battle...";
-        playerUI.SetActive(false);
 
         // Tunggu 1 detik untuk efek dramatis
         yield return new WaitForSeconds(1f);
@@ -56,8 +52,6 @@ public class BattleSystem : MonoBehaviour
     public void StartPlayerTurn()
     {
         isPlayerTurn = true;
-        playerUI.SetActive(true);
-        UpdateTurnUI("Giliran Player");
     }
 
     public void EndPlayerTurn()
@@ -70,7 +64,6 @@ public class BattleSystem : MonoBehaviour
             return;
         }
 
-        playerUI.SetActive(false);
         StartCoroutine(EnemyTurn());
     }
 
@@ -79,7 +72,6 @@ public class BattleSystem : MonoBehaviour
     IEnumerator EnemyTurn()
     {
         isPlayerTurn = false;
-        UpdateTurnUI($"Giliran {currentBoss.name}");
 
         // Tunggu sebentar untuk efek visual
         yield return new WaitForSeconds(turnDelay);
@@ -126,9 +118,6 @@ public class BattleSystem : MonoBehaviour
 
     public void GameOver(string message, bool isWin)
     {
-        gameOverText.text = message;
-        gameOverText.color = isWin ? Color.green : Color.red;
-        gameOverText.gameObject.SetActive(true);
 
         StartCoroutine(ReturnToMainScene(isWin));
     }
@@ -141,11 +130,7 @@ public class BattleSystem : MonoBehaviour
     }
 
     // ========== UI UPDATES ==========
-    void UpdateTurnUI(string text)
-    {
-        turnText.text = text;
-        turnText.color = isPlayerTurn ? Color.blue : Color.red;
-    }
+    
 
 
 }

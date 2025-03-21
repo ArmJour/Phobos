@@ -5,8 +5,8 @@ public class PlayerCombatActions : MonoBehaviour
 {
     // ========== REFERENSI SISTEM ==========
     [Header("System References")]
-    [SerializeField] private BattleSystem battleSystem;
-    [SerializeField] private Boss currentBoss;
+    private BattleSystem battleSystem;
+    private Boss currentBoss;
     [SerializeField] private AudioClip breathingSFX; // SFX untuk move3
 
     // ========== STATUS PLAYER ==========
@@ -18,13 +18,13 @@ public class PlayerCombatActions : MonoBehaviour
     // ========== UI REFERENCES ==========
     [Header("UI References")]
     [SerializeField] private Slider fearMeterSlider;
-    [SerializeField] private Text actionLogText;
 
     void Start()
     {
         fearMeter = 0; // Fear meter mulai dari 0
         UpdateFearUI();
-        currentBoss = battleSystem.currentBoss;
+        currentBoss = FindFirstObjectByType<Boss>();
+        battleSystem = FindFirstObjectByType<BattleSystem>();
     }
 
     // ========== DAFTAR MOVE ==========
@@ -32,7 +32,6 @@ public class PlayerCombatActions : MonoBehaviour
     {
         int damage = Random.Range(0, 21);
         currentBoss.TakeDamage(damage);
-        LogAction($"Serangan dasar! Damage: {damage}");
         EndTurn();
     }
 
@@ -40,7 +39,6 @@ public class PlayerCombatActions : MonoBehaviour
     {
         currentBoss.TakeDamage(10);
         currentBoss.ApplyMissDebuff(25);
-        LogAction("Serangan presisi! Damage 10 + 25% musuh meleset");
         EndTurn();
     }
 
@@ -49,13 +47,11 @@ public class PlayerCombatActions : MonoBehaviour
         int reduce = Random.Range(1, 4);
         UpdateFearMeter(-reduce);
         PlaySFX(breathingSFX); // SFX bernafas
-        LogAction($"Menenangkan diri! Fear -{reduce}");
         EndTurn();
     }
 
     public void Move4() // Placeholder
     {
-        LogAction("Move4 belum diimplementasi!");
         EndTurn();
     }
 
@@ -64,7 +60,6 @@ public class PlayerCombatActions : MonoBehaviour
         int reduce = Random.Range(2, 6);
         UpdateFearMeter(-reduce);
         battleSystem.GrantExtraTurn();
-        LogAction($"Persiapan khusus! Fear -{reduce} + Extra turn");
         EndTurn();
     }
 
@@ -73,7 +68,6 @@ public class PlayerCombatActions : MonoBehaviour
         int damage = Random.Range(20, 101);
         currentBoss.TakeDamage(damage);
         UpdateFearMeter(-7);
-        LogAction($"Serangan putus asa! Damage {damage} + Fear -7");
         EndTurn();
     }
 
@@ -120,8 +114,5 @@ public class PlayerCombatActions : MonoBehaviour
     }
 
     // ========== UI SYSTEM ==========
-    void LogAction(string message)
-    {
-        actionLogText.text = message;
-    }
+    
 }
