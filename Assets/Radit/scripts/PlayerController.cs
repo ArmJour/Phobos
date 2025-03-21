@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public GameObject GFX; 
     private Vector2 input;
-    private bool moving;
+    public bool moving;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;

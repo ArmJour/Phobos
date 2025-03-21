@@ -5,14 +5,17 @@ using UnityEngine.SceneManagement;
 public class BossInteraction : MonoBehaviour
 {
     public int bossIndex;
+    PlayerController playerController;
     [SerializeField] private LevelLoader levelLoader;
-    public GameObject interactPrompt; // Assign UI Text "Press E
+    [SerializeField] private GameObject interactPrompt; // Assign UI Text "Press E
+    [SerializeField] private GameObject interactFace;
 
     private bool isInRange;
 
     private void Start()
     {
         levelLoader = FindFirstObjectByType<LevelLoader>();
+        playerController = FindFirstObjectByType<PlayerController>();
     }
     void Update()
     {
@@ -31,11 +34,20 @@ public class BossInteraction : MonoBehaviour
     }
 
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             interactPrompt.SetActive(true);
+
+            if (playerController.moving == false)
+            {
+                interactFace.SetActive(true);
+            }
+            else
+            {
+                interactFace.SetActive(false);
+            }
             isInRange = true;
         }
     }
@@ -45,6 +57,7 @@ public class BossInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             interactPrompt.SetActive(false);
+            interactFace.SetActive(false);
             isInRange = false;
         }
     }
