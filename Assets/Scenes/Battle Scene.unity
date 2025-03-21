@@ -601,6 +601,17 @@ MonoBehaviour:
   associatedBackground: {fileID: 8327149}
   minFearDamage: 1
   maxFearDamage: 3
+  isBoss1: 0
+  boss1Move1Fear: 1
+  boss1Move1Turns: 3
+  boss1Move2Fear: 2
+  boss1Move2Turns: 2
+  boss1Move3Fear: 5
+  boss2Move1Fear: 3
+  boss2Move1MissChance: 30
+  boss2Move2Fear: 2
+  boss2Move3Fear: 5
+  boss2Move3Turns: 2
 --- !u!1 &289214016
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +741,17 @@ MonoBehaviour:
   associatedBackground: {fileID: 481808397}
   minFearDamage: 1
   maxFearDamage: 3
+  isBoss1: 0
+  boss1Move1Fear: 1
+  boss1Move1Turns: 3
+  boss1Move2Fear: 2
+  boss1Move2Turns: 2
+  boss1Move3Fear: 5
+  boss2Move1Fear: 3
+  boss2Move1MissChance: 30
+  boss2Move2Fear: 2
+  boss2Move3Fear: 5
+  boss2Move3Turns: 2
 --- !u!1 &366621165
 GameObject:
   m_ObjectHideFlags: 0
@@ -5322,7 +5344,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &2052255504
 GameObject:

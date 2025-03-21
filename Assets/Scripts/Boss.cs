@@ -16,10 +16,28 @@ public class Boss : MonoBehaviour
     [SerializeField] private int minFearDamage = 1; // Damage fear minimal (atur di Inspector)
     [SerializeField] private int maxFearDamage = 3; // Damage fear maksimal
 
+    private Coroutine currentRoutine;
+    private PlayerCombatActions player;
+    private BattleSystem battleSystem;
+
+    public bool isBoss1; // Centang untuk Boss1, hapus centang untuk Boss2
+    public int boss1Move1Fear = 1;
+    public int boss1Move1Turns = 3;
+    public int boss1Move2Fear = 2;
+    public int boss1Move2Turns = 2;
+    public int boss1Move3Fear = 5;
+    public int boss2Move1Fear = 3;
+    public float boss2Move1MissChance = 30;
+    public int boss2Move2Fear = 2;
+    public int boss2Move3Fear = 5;
+    public int boss2Move3Turns = 2;
+
     void Start()
     {
         currentHP = maxHP;
         InitializeUI();
+        player = FindFirstObjectByType<PlayerCombatActions>();
+        battleSystem = FindFirstObjectByType<BattleSystem>();
     }
 
     // ===== UI SETUP =====
