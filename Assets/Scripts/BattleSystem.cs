@@ -1,101 +1,151 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BattleSystem : MonoBehaviour
 {
-    // ==== REFERENSI BOSS & UI ====
-    public GameObject boss1; // Drag Boss1 dari Hierarchy
-    public GameObject boss2; // Drag Boss2 dari Hierarchy
-    public GameObject background1;
-    public GameObject background2;
-    public Slider fearMeterSlider;
+    // ========== REFERENSI OBJECT ==========
+    [Header("Object References")]
+    [SerializeField] private GameObject playerUI;
+    [SerializeField] private Boss boss1;
+    [SerializeField] private Boss boss2;
+    [SerializeField] private PlayerCombatActions playerActions;
 
-    // ==== VARIABEL TURN & BOSS ====
+    // ========== UI REFERENCES ==========
+    [Header("UI References")]
+    [SerializeField] private Slider fearMeterSlider;
+    [SerializeField] private Text turnText;
+    [SerializeField] private Text gameOverText;
+
+    // ========== SYSTEM SETTINGS ==========
+    [Header("Settings")]
+    [SerializeField] private float turnDelay = 1f;
+    [SerializeField] private int maxFear = 15;
+
+    // ========== STATUS BATTLE ==========
+    public Boss currentBoss;
+    public bool isPlayerTurn = true;
     private int currentBossIndex;
-    private Boss currentBoss;
-    private bool isPlayerTurn = true;
     private int extraTurns = 0;
 
     void Start()
     {
-        // Ambil index boss dari PlayerPrefs
+        StartCoroutine(StartBattle());
+    }
+
+    // ========== INISIALISASI BATTLE ==========
+    IEnumerator StartBattle()
+    {
+        // Ambil data boss yang diinteract dari scene utama
         currentBossIndex = PlayerPrefs.GetInt("CurrentBossIndex", 0);
-        SetupBattleEnvironment();
+        currentBoss = (currentBossIndex == 0) ? boss1 : boss2;
+
+        // Setup UI awal
+        UpdateFearUI(0);
+        turnText.text = "Persiapan Battle...";
+        playerUI.SetActive(false);
+
+        // Tunggu 1 detik untuk efek dramatis
+        yield return new WaitForSeconds(1f);
+
+        StartPlayerTurn();
     }
 
-    // ==== SETUP AWAL BATTLE ====
-    void SetupBattleEnvironment()
+    // ========== GILIRAN PLAYER ==========
+    public void StartPlayerTurn()
     {
-        // Matikan semua boss dan background
-        boss1.SetActive(false);
-        boss2.SetActive(false);
-        background1.SetActive(false);
-        background2.SetActive(false);
-
-        // Aktifkan sesuai index
-        if (currentBossIndex == 0)
-        {
-            boss1.SetActive(true);
-            background1.SetActive(true);
-            currentBoss = boss1.GetComponent<Boss>(); // Dapatkan komponen Boss
-        }
-        else
-        {
-            boss2.SetActive(true);
-            background2.SetActive(true);
-            currentBoss = boss2.GetComponent<Boss>();
-        }
+        isPlayerTurn = true;
+        playerUI.SetActive(true);
+        UpdateTurnUI("Giliran Player");
     }
 
-    // ==== METHOD UNTUK PLAYERCOMBATACTIONS ====
-    public Boss GetCurrentBoss()
-    {
-        return currentBoss; // Kembalikan boss yang aktif
-    }
-
-    public void GrantExtraTurn()
-    {
-        extraTurns = 1; // Beri 1 extra turn
-        Debug.Log("Extra turn diberikan!");
-    }
-
-    // ==== UPDATE UI FEAR METER ====
-    public void UpdateFearUI(int value)
-    {
-        fearMeterSlider.value = value;
-    }
-
-    // ==== LOGIKA GILIRAN PLAYER/MUSUH ====
     public void EndPlayerTurn()
     {
         if (extraTurns > 0)
         {
             extraTurns--;
-            Debug.Log("Player dapat giliran lagi!");
-            return; // Lanjutkan giliran player
+            Debug.Log($"Menggunakan extra turn! Sisa: {extraTurns}");
+            StartPlayerTurn(); // Langsung mulai giliran player lagi
+            return;
         }
 
+        playerUI.SetActive(false);
         StartCoroutine(EnemyTurn());
     }
 
-    // ==== GILIRAN MUSUH ====
+    // ========== GILIRAN MUSUH ==========
+
     IEnumerator EnemyTurn()
     {
         isPlayerTurn = false;
-        yield return new WaitForSeconds(1f);
+        UpdateTurnUI($"Giliran {currentBoss.name}");
 
-        // Musuh menyerang dan tambah fear meter
-        isPlayerTurn = true; // Kembali ke giliran player
+        // Tunggu sebentar untuk efek visual
+        yield return new WaitForSeconds(turnDelay);
 
-        if (!currentBoss.CheckMiss())
+        // Pilih serangan acak
+        int randomMove = Random.Range(0, 3);
+        currentBoss.ExecuteMove(randomMove);
+
+        // Tunggu eksekusi serangan selesai
+        yield return new WaitForSeconds(turnDelay);
+
+        // Cek kondisi kekalahan
+        if (fearMeterSlider.value >= maxFear)
         {
-            int fearDamage = currentBoss.CalculateBossAttack();
-            FindFirstObjectByType<PlayerCombatActions>().UpdateFearMeter(fearDamage);
+            GameOver("RASA TAKUT TERLALU BESAR!", false);
+            yield break;
         }
-        else
+
+        StartPlayerTurn();
+    }
+    public void GrantExtraTurn()
+    {
+        extraTurns++;
+        Debug.Log($"Extra turn granted! Sisa: {extraTurns}");
+    }
+
+    // ========== SISTEM FEAR METER ==========
+    public void UpdateFearUI(int fearValue)
+    {
+        fearMeterSlider.value = fearValue;
+
+        if (fearValue >= maxFear)
+            GameOver("RASA TAKUT TERLALU BESAR!", false);
+    }
+
+    // ========== SISTEM KEMENANGAN/KEGAGALAN ==========
+    public void CheckBossDefeat()
+    {
+        if (currentBoss.CurrentHP <= 0)
         {
-            Debug.Log("Serangan boss meleset!");
+            GameOver("ANDA MENGALAHKAN RASA TAKUT!", true);
         }
     }
+
+    public void GameOver(string message, bool isWin)
+    {
+        gameOverText.text = message;
+        gameOverText.color = isWin ? Color.green : Color.red;
+        gameOverText.gameObject.SetActive(true);
+
+        StartCoroutine(ReturnToMainScene(isWin));
+    }
+
+    // ========== TRANSISI SCENE ==========
+    IEnumerator ReturnToMainScene(bool isWin)
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(isWin ? "MainScene" : "GameOverScene");
+    }
+
+    // ========== UI UPDATES ==========
+    void UpdateTurnUI(string text)
+    {
+        turnText.text = text;
+        turnText.color = isPlayerTurn ? Color.blue : Color.red;
+    }
+
+
 }

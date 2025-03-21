@@ -601,7 +601,7 @@ MonoBehaviour:
   associatedBackground: {fileID: 8327149}
   minFearDamage: 1
   maxFearDamage: 3
-  isBoss1: 0
+  isBoss1: 1
   boss1Move1Fear: 1
   boss1Move1Turns: 3
   boss1Move2Fear: 2
