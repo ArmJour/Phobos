@@ -8,6 +8,8 @@ public class BattleSystem : MonoBehaviour
     [Header("Object References")]
     [SerializeField] private GameObject boss1;
     [SerializeField] private GameObject boss2;
+    [SerializeField] private GameObject boss1bg;
+    [SerializeField] private GameObject boss2bg;
     private PlayerCombatActions playerActions;
     private Boss currentBoss;
     private LevelLoader levelLoader;
@@ -34,16 +36,20 @@ public class BattleSystem : MonoBehaviour
 
         boss1.SetActive(false);
         boss2.SetActive(false);
+        boss1bg.SetActive(false);
+        boss2bg.SetActive(false);
 
         // Tampilkan boss sesuai index
         int bossIndex = PlayerPrefs.GetInt("CurrentBossIndex", 0);
         if (bossIndex == 0)
         {
             boss1.SetActive(true);
+            boss1bg.SetActive(true);
         }
         else
         {
             boss2.SetActive(true);
+            boss2bg.SetActive(true);
         }
     }
 
