@@ -37,16 +37,21 @@ public class BattleSystem : MonoBehaviour
 
         // Tampilkan boss sesuai index
         int bossIndex = PlayerPrefs.GetInt("CurrentBossIndex", 0);
-        currentBoss = (bossIndex == 0) ? boss1 : boss2;
-        currentBoss.SetActive(true); // Tampilkan boss yang dipilih
+        if (bossIndex == 0)
+        {
+            boss1.SetActive(true);
+        }
+        else
+        {
+            boss2.SetActive(true);
+        }
     }
 
     // ========== INISIALISASI BATTLE ==========
     IEnumerator StartBattle()
     {
         // Ambil data boss yang diinteract dari scene utama
-        currentBossIndex = PlayerPrefs.GetInt("CurrentBossIndex", 0);
-        currentBoss = (currentBossIndex == 0) ? boss1 : boss2;
+        
 
         // Setup UI awal
         UpdateFearUI(0);

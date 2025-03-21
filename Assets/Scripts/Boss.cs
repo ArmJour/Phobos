@@ -6,8 +6,7 @@ public class Boss : MonoBehaviour
 {
     // ========== CORE SYSTEMS ==========
     [Header("Base Settings")]
-    public GameObject Boss1;
-    public GameObject Boss2;
+    [SerializeField] private bool isBoss1;
     public int maxHP = 125;        // HP maksimal
     public Slider hpSlider;        // Assign UI Slider HP
 
@@ -166,4 +165,5 @@ public class Boss : MonoBehaviour
     {
         get { return currentHP; }
     }
+
 }

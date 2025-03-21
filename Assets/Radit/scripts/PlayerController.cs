@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
          if (GFX != null)
             spriteRenderer = GFX.GetComponent<SpriteRenderer>();
-        
     }
 
     private void Update()
