@@ -37,7 +37,16 @@ public class PlayerCombatActions : MonoBehaviour
 
     public void Move4()
     {
-        Debug.Log("Move4 (placeholder)");
+        if(fearMeter > 6)
+        {
+            int reduceAmount = Random.Range(2, 3);
+            UpdateFearMeter(-reduceAmount);
+            Debug.Log($"Move4: reducing fear by {reduceAmount}");
+        }
+        else
+        {
+            Debug.Log("fear not reduced because fear less than 6");
+        }
     }
 
     public void Move5()

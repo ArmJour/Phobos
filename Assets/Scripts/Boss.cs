@@ -4,17 +4,17 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour
 {
     [Header("Stats")]
-    public int maxHP = 125;
+    [SerializeField] private int maxHP = 125;
     private int currentHP;
     private bool hasMissDebuff; // Untuk efek Move2
 
     [Header("UI")]
-    public Slider healthSlider; // Assign di Inspector
-    public GameObject associatedBackground; // Background khusus boss ini
+    [SerializeField] private Slider healthSlider; // Assign di Inspector
+    [SerializeField] private GameObject associatedBackground; // Background khusus boss ini
 
     [Header("Combat")]
-    public int minFearDamage = 1; // Damage fear minimal (atur di Inspector)
-    public int maxFearDamage = 3; // Damage fear maksimal
+    [SerializeField] private int minFearDamage = 1; // Damage fear minimal (atur di Inspector)
+    [SerializeField] private int maxFearDamage = 3; // Damage fear maksimal
 
     void Start()
     {
