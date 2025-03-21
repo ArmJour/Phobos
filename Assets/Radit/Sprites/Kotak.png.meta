@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Kotak_0: -5005975066715947658
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Portal kanan_0: 4940447123909509130
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
