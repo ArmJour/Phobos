@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class BossInteraction : MonoBehaviour
 {
-    public int bossIndex;
     PlayerController playerController;
+    [SerializeField] private int bossIndex;
     [SerializeField] private LevelLoader levelLoader;
     [SerializeField] private GameObject interactPrompt; // Assign UI Text "Press E
     [SerializeField] private GameObject interactFace;

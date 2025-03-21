@@ -6,7 +6,8 @@ public class Boss : MonoBehaviour
 {
     // ========== CORE SYSTEMS ==========
     [Header("Base Settings")]
-    public bool isBoss1;           // Centang untuk Boss1
+    public GameObject Boss1;
+    public GameObject Boss2;
     public int maxHP = 125;        // HP maksimal
     public Slider hpSlider;        // Assign UI Slider HP
 

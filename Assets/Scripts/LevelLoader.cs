@@ -4,9 +4,15 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
+    private BossInteraction bossInteraction;
     [SerializeField] private Animator transition;
 
     // Update is called once per frame
+
+    private void Start()
+    {
+        bossInteraction = FindFirstObjectByType<BossInteraction>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))

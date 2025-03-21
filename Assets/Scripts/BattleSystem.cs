@@ -6,8 +6,8 @@ public class BattleSystem : MonoBehaviour
 {
     // ========== REFERENSI OBJECT ==========
     [Header("Object References")]
-    [SerializeField] private Boss boss1;
-    [SerializeField] private Boss boss2;
+    [SerializeField] private GameObject boss1;
+    [SerializeField] private GameObject boss2;
     private PlayerCombatActions playerActions;
     private Boss currentBoss;
     private LevelLoader levelLoader;
@@ -31,6 +31,14 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(StartBattle());
         currentBoss = FindFirstObjectByType<Boss>();
         levelLoader = FindFirstObjectByType<LevelLoader>();
+
+        boss1.SetActive(false);
+        boss2.SetActive(false);
+
+        // Tampilkan boss sesuai index
+        int bossIndex = PlayerPrefs.GetInt("CurrentBossIndex", 0);
+        currentBoss = (bossIndex == 0) ? boss1 : boss2;
+        currentBoss.SetActive(true); // Tampilkan boss yang dipilih
     }
 
     // ========== INISIALISASI BATTLE ==========
