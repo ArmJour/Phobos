@@ -5271,6 +5271,7 @@ MonoBehaviour:
   fearMeter: 0
   maxFear: 15
   fearMeterSlider: {fileID: 1714181234}
+  playerAnimation: {fileID: 888783851}
 --- !u!1 &2009406751
 GameObject:
   m_ObjectHideFlags: 0

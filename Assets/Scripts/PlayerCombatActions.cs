@@ -18,6 +18,7 @@ public class PlayerCombatActions : MonoBehaviour
     // ========== UI REFERENCES ==========
     [Header("UI References")]
     [SerializeField] private Slider fearMeterSlider;
+    [SerializeField] private Animator playerAnimation;
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class PlayerCombatActions : MonoBehaviour
     // ========== DAFTAR MOVE ==========
     public void Move1() // Random damage 0-20
     {
+        playerAnimation.SetTrigger("move1");
         int damage = Random.Range(0, 21);
         currentBoss.TakeDamage(damage);
         EndTurn();
@@ -37,6 +39,7 @@ public class PlayerCombatActions : MonoBehaviour
 
     public void Move2() // Damage 10 + 25% miss chance
     {
+        playerAnimation.SetTrigger("move2");
         currentBoss.TakeDamage(10);
         currentBoss.ApplyMissDebuff(25);
         EndTurn();
@@ -44,6 +47,7 @@ public class PlayerCombatActions : MonoBehaviour
 
     public void Move3() // Reduksi fear 1-3
     {
+        playerAnimation.SetTrigger("move3");
         int reduce = Random.Range(1, 4);
         UpdateFearMeter(-reduce);
         PlaySFX(breathingSFX); // SFX bernafas
@@ -52,6 +56,7 @@ public class PlayerCombatActions : MonoBehaviour
 
     public void Move4() // Placeholder
     {
+        playerAnimation.SetTrigger("move4");
         UpdateFearMeter(-15);
         currentBoss.ApplyMissDebuff(50);
         EndTurn();
@@ -59,6 +64,7 @@ public class PlayerCombatActions : MonoBehaviour
 
     public void Move5() // Extra turn + reduksi fear 2-5
     {
+        playerAnimation.SetTrigger("move5");
         int reduce = Random.Range(2, 6);
         UpdateFearMeter(-reduce);
         battleSystem.GrantExtraTurn();
@@ -67,6 +73,7 @@ public class PlayerCombatActions : MonoBehaviour
 
     public void Move6() // Damage besar + reduksi fear 7
     {
+        playerAnimation.SetTrigger("move6");
         int damage = Random.Range(20, 101);
         currentBoss.TakeDamage(damage);
         UpdateFearMeter(-7);
