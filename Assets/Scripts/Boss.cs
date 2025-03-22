@@ -133,6 +133,7 @@ public class Boss : MonoBehaviour
                 ));
                 break;
         }
+
     }
 
     // ========== FEAR OVER TIME SYSTEM ==========
