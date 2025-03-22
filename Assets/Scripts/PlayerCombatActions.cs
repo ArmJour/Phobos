@@ -7,7 +7,6 @@ public class PlayerCombatActions : MonoBehaviour
     [Header("System References")]
     private BattleSystem battleSystem;
     private Boss currentBoss;
-    [SerializeField] private AudioClip breathingSFX; // SFX untuk move3
 
     // ========== STATUS PLAYER ==========
     [Header("Player Stats")]
@@ -50,7 +49,6 @@ public class PlayerCombatActions : MonoBehaviour
         playerAnimation.SetTrigger("move3");
         int reduce = Random.Range(1, 4);
         UpdateFearMeter(-reduce);
-        PlaySFX(breathingSFX); // SFX bernafas
         EndTurn();
     }
 

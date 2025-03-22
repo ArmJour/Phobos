@@ -481,6 +481,7 @@ GameObject:
   - component: {fileID: 467177822}
   - component: {fileID: 467177824}
   - component: {fileID: 467177825}
+  - component: {fileID: 467177826}
   m_Layer: 0
   m_Name: Spider Main Scene
   m_TagString: Untagged
@@ -620,6 +621,24 @@ MonoBehaviour:
   levelLoader: {fileID: 182140859}
   interactPrompt: {fileID: 451344330}
   interactFace: {fileID: 817913126}
+--- !u!114 &467177826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467177821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe56024b784c404ba6c84f93b39a2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBoss1: 1
+  maxHP: 125
+  hpSlider: {fileID: 0}
+  portal1ToDisable: {fileID: 0}
+  portal2ToDisable: {fileID: 0}
+  winUI: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

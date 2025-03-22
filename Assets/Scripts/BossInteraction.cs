@@ -24,7 +24,7 @@ public class BossInteraction : MonoBehaviour
             if (levelLoader != null) // Tambahkan pengecekan null
             {
                 PlayerPrefs.SetInt("CurrentBossIndex", bossIndex);
-                levelLoader.LoadBattleView(2);
+                SceneManager.LoadScene("Battle Scene");
             }
             else
             {
