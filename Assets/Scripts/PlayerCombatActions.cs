@@ -52,6 +52,8 @@ public class PlayerCombatActions : MonoBehaviour
 
     public void Move4() // Placeholder
     {
+        UpdateFearMeter(-15);
+        currentBoss.ApplyMissDebuff(50);
         EndTurn();
     }
 
