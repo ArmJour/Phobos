@@ -567,7 +567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &249027603
 Transform:
   m_ObjectHideFlags: 0
@@ -596,11 +596,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe56024b784c404ba6c84f93b39a2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss1: 1
   maxHP: 125
-  healthSlider: {fileID: 1682015544}
-  associatedBackground: {fileID: 8327149}
-  minFearDamage: 1
-  maxFearDamage: 3
+  hpSlider: {fileID: 1682015544}
 --- !u!1 &289214016
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,11 +723,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe56024b784c404ba6c84f93b39a2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss1: 0
   maxHP: 175
-  healthSlider: {fileID: 877458101}
-  associatedBackground: {fileID: 481808397}
-  minFearDamage: 1
-  maxFearDamage: 3
+  hpSlider: {fileID: 877458101}
 --- !u!1 &366621165
 GameObject:
   m_ObjectHideFlags: 0
@@ -2897,9 +2893,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1652400789}
+      - m_Target: {fileID: 1482837868}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
-        m_MethodName: LoadMainView
+        m_MethodName: LoadSpawnView
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4031,6 +4027,51 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1482837867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1482837869}
+  - component: {fileID: 1482837868}
+  m_Layer: 0
+  m_Name: Level Loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1482837868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482837867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d51d2f96a70b4f4c9d461968f141541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transition: {fileID: 1105636598}
+--- !u!4 &1482837869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482837867}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.182437, y: -5.0226326, z: 6.8214207}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1490883182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4318,17 +4359,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631573323}
   m_CullTransparentMesh: 1
---- !u!114 &1652400789 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8360024282166677778, guid: 264033264e99df74ba25b33e2c11d8cd, type: 3}
-  m_PrefabInstance: {fileID: 1747283005}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d51d2f96a70b4f4c9d461968f141541, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1682015544 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 442566588429187312, guid: c4407d94ddf91cf478e71c42ddfc92f7, type: 3}
@@ -4930,6 +4960,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1452422925}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: CloseFight
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1829309529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5174,9 +5216,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss1: {fileID: 249027602}
   boss2: {fileID: 296716212}
-  background1: {fileID: 8327149}
-  background2: {fileID: 481808397}
+  boss1bg: {fileID: 8327149}
+  boss2bg: {fileID: 481808397}
   fearMeterSlider: {fileID: 1714181234}
+  turnDelay: 1
+  maxFear: 15
+  isPlayerTurn: 1
 --- !u!1 &1959692032
 GameObject:
   m_ObjectHideFlags: 0
@@ -5222,6 +5267,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f09034967f0a2a4cac4b06bc9790b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  breathingSFX: {fileID: 8300000, guid: 62fa80ff99d5b3a4b90f1ef1386fbe57, type: 3}
+  fearMeter: 0
+  maxFear: 15
+  fearMeterSlider: {fileID: 1714181234}
+  playerAnimation: {fileID: 888783851}
 --- !u!1 &2009406751
 GameObject:
   m_ObjectHideFlags: 0
@@ -5322,7 +5372,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &2052255504
 GameObject:
@@ -5732,11 +5782,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 398816280045076244, guid: c4407d94ddf91cf478e71c42ddfc92f7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 398816280045076244, guid: c4407d94ddf91cf478e71c42ddfc92f7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 753127112465477874, guid: c4407d94ddf91cf478e71c42ddfc92f7, type: 3}
       propertyPath: m_Pivot.x
@@ -5859,3 +5909,4 @@ SceneRoots:
   - {fileID: 249027603}
   - {fileID: 296716213}
   - {fileID: 1959692034}
+  - {fileID: 1482837869}

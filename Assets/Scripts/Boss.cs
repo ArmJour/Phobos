@@ -1,72 +1,170 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
-    [Header("Stats")]
-    [SerializeField] private int maxHP = 125;
+    // ========== CORE SYSTEMS ==========
+    [Header("Base Settings")]
+    [SerializeField] private bool isBoss1;
+    public int maxHP = 125;        // HP maksimal
+    public Slider hpSlider;        // Assign UI Slider HP
+
+    [Header("Fear Settings")]
+    private int boss1Move1Fear = 1; // Fear per turn (Move1 Boss1)
+    private int boss1Move1Turns = 3;// Durasi (Move1 Boss1)
+    private int boss1Move2Fear = 2;
+    private int boss1Move2Turns = 2;
+    private int boss1Move3Fear = 5;
+    private int boss2Move1Fear = 3;
+    private float boss2Move1MissChance = 30; // % miss chance
+    private int boss2Move2Fear = 2;
+    private int boss2Move3Fear = 5;
+    private int boss2Move3Turns = 2;
+
+    // ========== PRIVATE VARIABLES ==========
     private int currentHP;
-    private bool hasMissDebuff; // Untuk efek Move2
-
-    [Header("UI")]
-    [SerializeField] private Slider healthSlider; // Assign di Inspector
-    [SerializeField] private GameObject associatedBackground; // Background khusus boss ini
-
-    [Header("Combat")]
-    [SerializeField] private int minFearDamage = 1; // Damage fear minimal (atur di Inspector)
-    [SerializeField] private int maxFearDamage = 3; // Damage fear maksimal
+    private Coroutine currentRoutine;
+    private PlayerCombatActions player;
+    private BattleSystem battleSystem;
+    private LevelLoader levelLoader;
 
     void Start()
     {
-        currentHP = maxHP;
-        InitializeUI();
+        InitializeBoss();
+        InitializeHealthUI();
     }
 
-    // ===== UI SETUP =====
-    void InitializeUI()
+    // ========== INITIALIZATION ==========
+    void InitializeBoss()
     {
-        if (healthSlider != null)
-        {
-            healthSlider.maxValue = maxHP;
-            healthSlider.value = maxHP;
-        }
+        currentHP = maxHP;
+        player = FindFirstObjectByType<PlayerCombatActions>();
+        battleSystem = FindFirstObjectByType<BattleSystem>();
+        levelLoader = FindFirstObjectByType<LevelLoader>();
     }
 
-    // ===== DAMAGE & DEBUFF =====
+    // ========== COMBAT SYSTEM ==========
     public void TakeDamage(int damage)
     {
         currentHP = Mathf.Max(currentHP - damage, 0);
         UpdateHealthUI();
 
-        if (currentHP <= 0) Debug.Log("Boss dikalahkan!");
+        if (currentHP <= 0) HandleDefeat();
     }
 
-    public void ApplyMissDebuff(int missChance)
+    void HandleDefeat() // INI PAS BOSS DIKALAHKAN
     {
-        hasMissDebuff = true;
-        Debug.Log($"Debuff applied: {missChance}% chance miss");
+        Debug.Log("BOSS DIKALAHKAN!");
+        levelLoader.LoadSpawnView();
+        // Tambahkan logika kemenangan di sini
+    }
+
+    // ========== MISS DEBUFF SYSTEM ==========
+    public void ApplyMissDebuff(float missChance)
+    {
+        player.ApplyMissChance(missChance);
     }
 
     public bool CheckMiss()
     {
-        if (!hasMissDebuff) return false;
-
-        bool isMiss = (Random.Range(0, 100) < 25); // 25% chance miss
-        hasMissDebuff = false; // Reset setelah dicek
-        return isMiss;
+        return player.CheckForMiss();
     }
 
-    // ===== FEAR DAMAGE CALCULATION =====
+    // ========== BOSS ATTACK SYSTEM ==========
     public int CalculateBossAttack()
     {
-        // Atur damage berbeda untuk tiap boss
-        return Random.Range(minFearDamage, maxFearDamage + 1);
+        return isBoss1 ?
+            Random.Range(1, 4) :   // Boss1: 1-3 damage 
+            Random.Range(2, 6);     // Boss2: 2-5 damage
     }
 
-    // ===== UI UPDATE =====
+    public void ExecuteMove(int moveIndex)
+    {
+        if (currentRoutine != null) StopCoroutine(currentRoutine);
+
+        if (isBoss1) HandleBoss1Moves(moveIndex);
+        else HandleBoss2Moves(moveIndex);
+    }
+
+    // ========== BOSS1 MOVES ==========
+    void HandleBoss1Moves(int moveIndex)
+    {
+        switch (moveIndex)
+        {
+            case 0: // Fear 1/turn for 3 turns
+                currentRoutine = StartCoroutine(FearOverTime(
+                    boss1Move1Fear,
+                    boss1Move1Turns
+                ));
+                break;
+
+            case 1: // Fear 2/turn for 2 turns
+                currentRoutine = StartCoroutine(FearOverTime(
+                    boss1Move2Fear,
+                    boss1Move2Turns
+                ));
+                break;
+
+            case 2: // Instant 5 fear
+                player.UpdateFearMeter(boss1Move3Fear);
+                break;
+        }
+    }
+
+    // ========== BOSS2 MOVES ==========
+    void HandleBoss2Moves(int moveIndex)
+    {
+        switch (moveIndex)
+        {
+            case 0: // Fear 3 + 30% miss
+                player.UpdateFearMeter(boss2Move1Fear);
+                ApplyMissDebuff(boss2Move1MissChance);
+                break;
+
+            case 1: // Instant 2 fear
+                player.UpdateFearMeter(boss2Move2Fear);
+                break;
+
+            case 2: // Fear 5/turn for 2 turns
+                currentRoutine = StartCoroutine(FearOverTime(
+                    boss2Move3Fear,
+                    boss2Move3Turns
+                ));
+                break;
+        }
+
+    }
+
+    // ========== FEAR OVER TIME SYSTEM ==========
+    IEnumerator FearOverTime(int fearPerTurn, int turns)
+    {
+        for (int i = 0; i < turns; i++)
+        {
+            yield return new WaitUntil(() => battleSystem.isPlayerTurn);
+            player.UpdateFearMeter(fearPerTurn);
+            yield return new WaitUntil(() => !battleSystem.isPlayerTurn);
+        }
+    }
+
+    // ========== UI SYSTEM ==========
+    void InitializeHealthUI()
+    {
+        if (hpSlider != null)
+        {
+            hpSlider.maxValue = maxHP;
+            hpSlider.value = maxHP;
+        }
+    }
+
     void UpdateHealthUI()
     {
-        if (healthSlider != null)
-            healthSlider.value = currentHP;
+        if (hpSlider != null)
+            hpSlider.value = currentHP;
     }
+    public int CurrentHP
+    {
+        get { return currentHP; }
+    }
+
 }

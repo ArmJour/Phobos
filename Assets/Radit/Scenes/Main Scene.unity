@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossIndex: 0
-  levelLoader: {fileID: 0}
+  levelLoader: {fileID: 182140859}
   interactPrompt: {fileID: 451344330}
   interactFace: {fileID: 817913126}
 --- !u!1 &519420028
@@ -1734,6 +1734,10 @@ PrefabInstance:
     - target: {fileID: 2033896019494111641, guid: 264033264e99df74ba25b33e2c11d8cd, type: 3}
       propertyPath: m_Name
       value: Battle Loader
+      objectReference: {fileID: 0}
+    - target: {fileID: 2430164591602849520, guid: 264033264e99df74ba25b33e2c11d8cd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3727443001184801864, guid: 264033264e99df74ba25b33e2c11d8cd, type: 3}
       propertyPath: m_LocalPosition.x
